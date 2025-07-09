@@ -1,68 +1,63 @@
-# bdCalling Interview process
+# Heart Vibrate - Backend Server  
 
-# All methods are POST
+A robust **Node.js + Express** backend for the **Heart Vibrate** chat application, featuring authentication, real-time messaging, file uploads, and payment integration.  
 
-## base url => http://192.168.10.70:3010/api/v1
+## 🚀 Features  
 
-## create user => url: http://192.168.10.70:3010/api/v1/user/create-user
+### 🔒 Authentication & Security  
+- **JWT-based authentication** (`jsonwebtoken`)  
+- **Password hashing** (`bcrypt`)  
+- **CORS & cookie management** (`cors`, `cookie-parser`)  
 
-method: POST,
-data need send with form-data
-Input=>
-data ={
-"name": "user",
-"email": "abdulsatter.ism@gmail.com",
-"phone": "+1234567890",
-"password": "12345678"
-}
+### 💬 Real-Time Chat  
+- **Socket.IO** for instant messaging  
+- **MongoDB** (via `mongoose`) for message history  
 
-and
-send image with file , file name = image and formate => png, jpeg or jpg (formate)
+### 📝 Logging & Monitoring  
+- **Winston** for structured logging  
+- **Daily log rotation**  
 
-# Output=>
+---
 
-    {
-    "success": true,
-    "message": "Please check your email to verify your account."
+## 🛠️ Tech Stack  
 
-}
+| Category       | Packages Used                          |  
+|---------------|----------------------------------------|  
+| **Runtime**   | Node.js (TypeScript)                   |  
+| **Framework** | Express                                |  
+| **Database**  | MongoDB (Mongoose)                     |  
+| **Auth**      | JWT, Bcrypt                           |  
+| **Realtime**  | Socket.IO                              |  
+| **Logging**   | Winston + Daily Rotate File            |  
+| **Linting**   | ESLint + Prettier                      |  
 
-## verify email => url: http://192.168.10.70:3010/api/v1/auth/verify-email
+---
 
-method: POST,
-send email and oneTimeCode for verify email. oneTimeCode is number
-Input=>
-body :{
-"email": "abdulsatter.ism@gmail.com",
-"oneTimeCode":583174
-}
+## ⚙️ Installation  
 
-Output=>
-{
-"success": true,
-"message": "Your email has been successfully verified. Your account is now fully activated.",
-"data": {
-"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MTk5LCJleHAiOjE3MzkyNTExOTl9.HRBhhmwaaVUYNKiGoT5p_1-W8mz0qKFofF3lIfAfsHs",
-"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MTk5LCJleHAiOjE3NjgxOTUxOTl9.adfuWcTa2PahcMOE3N6fFmiXfxrxJLB_DP-DpvSGLEI"
-}
-}
+1. **Clone the repo**  
+   ```sh 
+   git clone https://github.com/shaishabcoding/heart-vibrate-server.git
+   cd heart-vibrate-server
+   ```
 
-## Login user => url: http://192.168.10.70:3010/api/v1/auth/login
+2. **Install dependencies**  
+   ```sh
+   npm install
+   ```
 
-method: POST,
-send email and password, password will be string
-Input=>
-body :{
-"email": "abdulsatter.ism@gmail.com",
-"password": "12345678"
-}
+3. **Set up environment variables**  
+   Create a `.env` file:  
+   ```env
+   PORT=5000
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret_key
+   STRIPE_KEY=your_stripe_api_key
+   SMTP_USER=your_email@service.com
+   SMTP_PASS=your_email_password
+   ```
 
-Output=>
-{
-"success": true,
-"message": "User login successfully",
-"data": {
-"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MjE5LCJleHAiOjE3MzkyNTEyMTl9.mlusij1b9NZaQHaDcZvXrKHIQiSMB22qe1fUNI66ifs",
-"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MjE5LCJleHAiOjE3NjgxOTUyMTl9.R472lWcgFwncGGEJAz2su94tsqZdOGE0ClmfnwsEo70"
-}
-}
+4. **Run the server**  
+   ```sh
+   npm run dev  # Development (ts-node-dev)
+   ```
