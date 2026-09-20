@@ -1,68 +1,72 @@
-# bdCalling Interview process
+# Heart Vibrate - A Modern Chat Application  
 
-# All methods are POST
+**Heart Vibrate** is a feature-rich chat application that supports text, image, video, and voice transfers in both single and group chats. It also includes multi-language support for a global user experience.  
 
-## base url => http://192.168.10.70:3010/api/v1
+## ✨ Features  
 
-## create user => url: http://192.168.10.70:3010/api/v1/user/create-user
+- **Real-time Messaging**  
+  - Single & group chats  
+  - Typing indicators  
+  - Message read receipts  
 
-method: POST,
-data need send with form-data
-Input=>
-data ={
-"name": "user",
-"email": "abdulsatter.ism@gmail.com",
-"phone": "+1234567890",
-"password": "12345678"
-}
+- **Media Sharing**  
+  - Images & videos  
+  - Voice messages  
+  - File attachments  
 
-and
-send image with file , file name = image and formate => png, jpeg or jpg (formate)
+- **Multi-language Support** 🌍  
+  - Localized UI for global users  
 
-# Output=>
+- **Modern UI**  
+  - Responsive design  
+  - Dark/light mode  
+  - Smooth animations  
 
-    {
-    "success": true,
-    "message": "Please check your email to verify your account."
+- **Security & Performance**  
+  - End-to-end encryption (optional)  
+  - Optimized for fast message delivery  
 
-}
+## 🛠️ Tech Stack  
 
-## verify email => url: http://192.168.10.70:3010/api/v1/auth/verify-email
+### Frontend  
+- **React** (Vite)  
+- **Redux Toolkit** (State management)  
+- **Radix UI** (Accessible components)  
+- **Tailwind CSS** (Styling)  
+- **Framer Motion** (Animations)  
+- **Socket.IO** (Real-time communication)  
 
-method: POST,
-send email and oneTimeCode for verify email. oneTimeCode is number
-Input=>
-body :{
-"email": "abdulsatter.ism@gmail.com",
-"oneTimeCode":583174
-}
+### Backend (if applicable)  
+- **Node.js** (Express/NestJS)  
+- **MongoDB/PostgreSQL** (Database)  
+- **Firebase/Supabase** (Optional for auth/storage)  
 
-Output=>
-{
-"success": true,
-"message": "Your email has been successfully verified. Your account is now fully activated.",
-"data": {
-"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MTk5LCJleHAiOjE3MzkyNTExOTl9.HRBhhmwaaVUYNKiGoT5p_1-W8mz0qKFofF3lIfAfsHs",
-"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MTk5LCJleHAiOjE3NjgxOTUxOTl9.adfuWcTa2PahcMOE3N6fFmiXfxrxJLB_DP-DpvSGLEI"
-}
-}
+## 🚀 Installation  
 
-## Login user => url: http://192.168.10.70:3010/api/v1/auth/login
+1. Clone the repo:  
+   ```sh
+   git clone https://github.com/shaishabcoding/heart-vibrate.git
+   cd heart-vibrate
+   ```
 
-method: POST,
-send email and password, password will be string
-Input=>
-body :{
-"email": "abdulsatter.ism@gmail.com",
-"password": "12345678"
-}
+2. Install dependencies:  
+   ```sh
+   npm install
+   ```
 
-Output=>
-{
-"success": true,
-"message": "User login successfully",
-"data": {
-"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MjE5LCJleHAiOjE3MzkyNTEyMTl9.mlusij1b9NZaQHaDcZvXrKHIQiSMB22qe1fUNI66ifs",
-"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODM1MGNmMmQ2ODlhZjljYzQ3ZGFmMSIsInJvbGUiOiJVU0VSIiwiZW1haWwiOiJhYmR1bHNhdHRlci5pc21AZ21haWwuY29tIiwiaWF0IjoxNzM2NjU5MjE5LCJleHAiOjE3NjgxOTUyMTl9.R472lWcgFwncGGEJAz2su94tsqZdOGE0ClmfnwsEo70"
-}
-}
+3. Set up environment variables:  
+   - Create a `.env` file based on `.env.example`  
+   - Add required API keys (e.g., Firebase, Socket.IO server URL)  
+
+4. Run the app:  
+   ```sh
+   npm run dev
+   ```
+
+## 📜 License  
+MIT  
+
+---
+
+💌 **Contribution welcome!** Feel free to open issues or PRs.  
+🔗 **Live Demo**: [Coming Soon]  
