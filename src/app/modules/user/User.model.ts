@@ -41,6 +41,14 @@ const userSchema = new Schema<TUser>(
       enum: ['ACTIVE', 'SUSPENDED', 'DELETED'],
       default: 'ACTIVE',
     },
+    otp: {
+      type: Number,
+      select: false,
+    },
+    otpExpiry: {
+      type: Date,
+      select: false,
+    },
   },
   { timestamps: true },
 );

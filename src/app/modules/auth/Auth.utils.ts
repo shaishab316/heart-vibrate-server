@@ -1,5 +1,7 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { StatusCodes } from 'http-status-codes';
 import config from '../../../config';
+import ApiError from '../../../errors/ApiError';
 
 export type TTokenType = 'access' | 'reset' | 'refresh';
 
@@ -43,6 +45,11 @@ export const verifyToken = (token: string, type: TTokenType) => {
         token,
         config.jwt.jwtRefreshSecret as string,
       ) as JwtPayload;
+  }
+
+  // make sure a token is only accepted for the purpose it was issued for
+  if (user.tokenType !== type) {
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'Invalid token!');
   }
 
   return user;

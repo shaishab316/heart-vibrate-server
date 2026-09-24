@@ -29,15 +29,30 @@ router.patch(
   AuthController.changePassword,
 );
 
+/**
+ * send a one time password to the user's email
+ */
 router.post(
   '/forget-password',
-  auth('USER', 'ADMIN'),
+  purifyRequest(AuthValidation.forgetPasswordValidationSchema),
   AuthController.forgetPassword,
 );
 
+/**
+ * verify the otp and get a reset token back
+ */
+router.post(
+  '/verify-otp',
+  purifyRequest(AuthValidation.verifyOtpValidationSchema),
+  AuthController.verifyOtp,
+);
+
+/**
+ * reset the password using the reset token from verify-otp
+ */
 router.post(
   '/reset-password',
-  auth('USER', 'ADMIN'),
+  purifyRequest(AuthValidation.resetPasswordValidationSchema),
   AuthController.resetPassword,
 );
 

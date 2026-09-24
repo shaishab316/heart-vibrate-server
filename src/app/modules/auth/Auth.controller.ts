@@ -49,23 +49,40 @@ export const AuthController = {
   }),
 
   forgetPassword: catchAsync(async (req, res) => {
-    await AuthServices.forgetPassword(req.user);
+    const { email } = req.body;
+
+    await AuthServices.forgetPassword({ email });
 
     sendResponse(res, {
       success: true,
       statusCode: StatusCodes.OK,
-      message: 'Password reset link sent successfully!',
+      message: 'OTP sent to your email successfully!',
       data: null,
     });
   }),
 
-  resetPassword: catchAsync(async (req, res) => {
-    await AuthServices.forgetPassword(req.user);
+  verifyOtp: catchAsync(async (req, res) => {
+    const { email, otp } = req.body;
+
+    const result = await AuthServices.verifyOtp({ email, otp: Number(otp) });
 
     sendResponse(res, {
       success: true,
       statusCode: StatusCodes.OK,
-      message: 'Password reset link sent successfully!',
+      message: 'OTP verified successfully!',
+      data: result,
+    });
+  }),
+
+  resetPassword: catchAsync(async (req, res) => {
+    const { token, newPassword } = req.body;
+
+    await AuthServices.resetPassword({ token, newPassword });
+
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: 'Password has been reset successfully!',
       data: null,
     });
   }),
