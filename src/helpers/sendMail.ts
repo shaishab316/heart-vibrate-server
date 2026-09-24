@@ -16,7 +16,7 @@ export async function sendEmail(email: string, subject: string, text: string) {
     });
 
     const info = await transporter.sendMail({
-      from: `"bdCalling" ${config.email.from}`, // Sender address
+      from: `"HeartVibrate" ${config.email.from}`, // Sender address
       to: email, // Recipient's email
       subject: `${subject}`, // Subject line
       text: text, // Plain text version
